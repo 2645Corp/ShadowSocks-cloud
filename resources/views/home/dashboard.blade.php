@@ -29,7 +29,102 @@
     </div>
     <!-- / main header -->
     <div class="wrapper-md" ng-controller="FlotChartDemoCtrl">
+<style>
+  .port-content {
+    float:left;
+    min-width: 200px;
+    display: block;
+  }
 
+  p  {
+    word-wrap: break-word;
+  }
+  .port-title {
+    text-align: center;
+    font-size: 36px;
+  }
+
+  .port-img {
+    width: 100%;
+  }
+</style>
+      <!-- nodelist -->
+      <div class="panel hbox hbox-auto-xs no-border">
+        <div class="col wrapper">
+          <i class="fa fa-circle-o text-info m-r-sm pull-right"></i>
+          <h3 class="font-thin m-t-none m-b-none text-primary-lt">节点列表</h3>
+          <div class="row">
+          @foreach($ports as $port)
+            <div class="port-content col-sm-4 col-xs-12">
+              <h4 class="port-title">{{ $port->node->name }}</h4>
+              <img class="port-img" src="{{ $port->img }}" />
+              <p>{{ $port->uri }}</p>
+            </div>
+          @endforeach
+            </div>
+        </div>
+        <div class="col wrapper-lg w-xl bg-light dk r-r">
+          <!-- START PROGRESS BARS -->
+          <div class="col-md-12">
+            <div class="box">
+            <h4 class="font-thin m-t-none m-b">Shadowsocks 客户端下载</h4>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="box box-success">
+                <div class="box-header">
+                  <h3 class="box-title">Windows客户端</h3>
+                </div>
+                <div class="box-body">
+                  <dl class="">
+                    <dt>C#版本（推荐）</dt>
+                    <dd><a href="https://github.com/shadowsocks/shadowsocks-windows/releases">Github下载</a>|<a href="http://ix-cdn-qiniu-ss.chinacrec.org/Shadowsocks-CSharp-3.2.zip">七牛CDN下载</a></dd>
+                    <dt>Qt版本</dt>
+                    <dd><a href="https://github.com/shadowsocks/shadowsocks-qt5/releases">Github下载</a>|<a href="http://ix-cdn-qiniu-ss.chinacrec.org/Shadowsocks-QT5-2.7.zip">七牛CDN下载</a></dd>
+                    <dt>.NET框架（用于C#版）</dt>
+                    <dd><a href="https://www.microsoft.com/zh-cn/download/details.aspx?id=17718">直接前往微软官网下载</a></dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="box box-primary">
+                <div class="box-header">
+                  <h3 class="box-title">安卓客户端</h3>
+                </div>
+                <div class="box-body">
+                  <dl class="">
+                    <dt>Github下载（推荐）</dt>
+                    <dd><a href="https://github.com/shadowsocks/shadowsocks-android/releases">点此进入</a></dd>
+                    <dt>Play商店（有广告）</dt>
+                    <dd><a href="https://play.google.com/store/apps/details?id=com.github.shadowsocks&hl=zh_CN">点此进入</a></dd>
+                    <dt>七牛CDN下载</dt>
+                    <dd><a href="http://ix-cdn-qiniu-ss.chinacrec.org/Shadowsocks-nightly-3.0.6.apk">点此进入</a></dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="box box-info">
+                <div class="box-header">
+                  <h3 class="box-title">其它系统的客户端</h3>
+                </div>
+                <div class="box-body">
+                  <dl class="">
+                    <dt>iOS-Surge</dt>
+                    <dd><a href="https://itunes.apple.com/cn/app/surge-web-developer-tool-proxy/id1040100637?mt=8">App Srore</a></dd>
+                    <dt>OpenWrt-SS-Libev</dt>
+                    <dd><a href="https://github.com/shadowsocks/openwrt-shadowsocks/releases">Github源码</a>|<a href="https://sourceforge.net/projects/openwrt-dist/files/shadowsocks-libev/">SorceForge下载软件包</a></dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+          <!-- /.row -->
+          <!-- END PROGRESS BARS -->
+
+        </div>
+      </div>
+      <!-- / nodelist -->
 
       <!-- service -->
       <div class="panel hbox hbox-auto-xs no-border">
@@ -84,14 +179,15 @@
       <!-- / service -->
 
       <!-- tasks -->
-      <div class="panel wrapper">
+     <!-- <div class="panel wrapper">
         <div class="row">
           <div class="col-md-6 b-r b-light no-border-xs">
             <a href class="text-muted pull-right text-lg"><i class="icon-arrow-right"></i></a>
             <h4 class="font-thin m-t-none m-b-md text-muted">My Tasks</h4>
             <div class=" m-b">
               <div class="m-b">
-                <span class="label text-base bg-warning pos-rlt m-r"><i class="arrow right arrow-warning"></i> 19:30</span>
+                <span class="label text-base bg-warning pos-rlt m-r"><i
+                          class="arrow right arrow-warning"></i> 19:30</span>
                 <a href>Feed cat</a>
               </div>
               <div class="m-b">
@@ -99,7 +195,8 @@
                 <a href>Fishing Time</a>
               </div>
               <div class="m-b">
-                <span class="label text-base bg-primary pos-rlt m-r"><i class="arrow right arrow-primary"></i> 10:30</span>
+                <span class="label text-base bg-primary pos-rlt m-r"><i
+                          class="arrow right arrow-primary"></i> 10:30</span>
                 <a href>Kick-off meeting</a>
               </div>
               <div class="m-b">
@@ -108,7 +205,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-6">            
+          <div class="col-md-6">
             <div class="row row-sm">
               <div class="col-xs-6 text-center">
                 <div ui-jq="easyPieChart" ui-options="{
@@ -144,14 +241,14 @@
                 </div>
                 <div class="text-muted font-bold text-xs m-t m-b">Started</div>
               </div>
-            </div>            
+            </div>
           </div>
         </div>
-      </div>
+      </div> -->
       <!-- / tasks -->
 
       <!-- tasks -->
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-md-6">
           <div class="panel no-border">
             <div class="panel-heading wrapper b-b b-light">
@@ -160,7 +257,7 @@
                 <i class="fa fa-circle text-info m-r-xs m-l-sm"></i> 30
                 <i class="fa fa-circle text-warning m-r-xs m-l-sm"></i> 98
               </span>
-              <h4 class="font-thin m-t-none m-b-none text-muted">Teammates</h4>              
+              <h4 class="font-thin m-t-none m-b-none text-muted">Teammates</h4>
             </div>
             <ul class="list-group list-group-lg m-b-none">
               <li class="list-group-item">
@@ -198,7 +295,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-6">            
+        <div class="col-md-6">
           <div class="list-group list-group-lg list-group-sp">
             <a herf class="list-group-item clearfix">
               <span class="pull-left thumb-sm avatar m-r">
@@ -252,7 +349,7 @@
             </a>
           </div>
         </div>
-      </div>
+      </div> -->
       <!-- / tasks -->
     </div>
   </div>

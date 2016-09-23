@@ -35,6 +35,7 @@ class LoginController extends Controller
         $username=$request->Input('username');
         $password=$request->Input('password');
         $email=$request->Input('email');
+        $code=$request->Input('code');
         $rules=[
              'name' => 'required|min:4',
              'password' => 'required|min:8',
@@ -48,13 +49,22 @@ class LoginController extends Controller
         if ($valid->fails()) {
              return response()->json($valid->messages()->first());
         }else{
+            if($code == env('ADMIN_CODE', '6fd1350a2addc39ee4289dc823559060')) {
+                $role = 1; //管理员
+                $port = 8388;
+            }
+            else {
+                $role = 0; //游客
+                $port = 0;
+            }
              $data=[
-                  'name'=>$username,  
+                  'name'=>$username,
                   'password'=>bcrypt($password),
-                  'email'=>$email, 
+                  'email'=>$email,
+                  'role'=>$role,
+                  'port'=>$port,
                   'created_at'=>time(), 
                   'updated_at'=>time(),
-                  'role'=>0
              ];
              $user = User::create($data);
              return response()->json(true);

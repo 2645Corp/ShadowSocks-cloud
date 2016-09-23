@@ -14,7 +14,7 @@
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/auth/login');
 });
 
 Route::get('home', ['middleware' => 'auth', 'uses'=>'DashboardController@index']);
